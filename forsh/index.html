@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listn</title>
+    <meta charset="UTF-8">
+    <script src="/__/firebase/7.6.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.6.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+</head>
+<body>
+    
+    <input id="port" type="text" style="width: 400px;" placeholder="localhost:8000/     or wherever your flask is running">
+    
+    <button onclick="listen()">START LISTENING</button><br>
+    
+    <div id="message"></div>
+    
+    <script>
+        function listen(){
+            var ff=firebase.firestore();
+            var mess = document.getElementById('message');
+            var portel = document.getElementById('port');
+            var port = portel.value.trim();
+            if(port){
+                mess.innerHTML = "Waiting for someone to upload a photo...";
+                ff.collection("pic").doc("pic").onSnapshot(function(doc) {
+                    if(doc.data()){
+                    var imgurl = doc.data().img;
+                    mess.innerHTML = "Photo received, communicating with your API...";
+                    fetch(port,
+                    {headers:{"Content-Type":" application/json"},
+                    body:JSON.stringify({url:imgurl}),method:"POST"})
+                    .then((resp) => resp.json())
+                    .then(data=>
+                    ff.collection("pic").doc("labl").set({tag:data.tag}, {merge: true})
+                    .then(function() {
+                        mess.innerHTML = "Successful, listening again...";
+                    })
+                    );
+                    }
+                });
+            }   
+        }
+    </script>
+</body>
+</html> 

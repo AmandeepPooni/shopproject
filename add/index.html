@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NITH TRADING</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../main.css">
+    <script src="/__/firebase/7.6.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.6.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.6.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.6.2/firebase-storage.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <style>
+        input{
+            height: 35px;
+            margin: 10px 200px;
+            padding: 0 20px;
+        }
+        
+        button{
+            height: 50px;
+            margin: 20px 200px;
+            background-color: aquamarine;
+        }
+        
+        label{
+            height: 25px;
+            margin: 0px 200px;
+            padding: 0 20px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="top">
+        
+        
+    </div>
+    
+    <div class="searchcon">
+        <div class="websitename" style="margin: 20px 20px;">
+            NITH TRADING CO.
+        </div>
+        <div class="f1"></div>
+        <div class="buy teal" style="padding: 10px 30px;">
+            ADD
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="flexc submi">
+        <div class="flex">
+            <img id="display" src="" alt="Product image" style="max-width: 400px; max-height:200px;">
+            <img id="display2" src="" alt="Product image" style="display: none;">
+            <img id="display3" src="" alt="Product image" style="display: none;">
+        </div>
+        <div class="flex">
+            <img class="filtered" id="displayhigh" src="" alt="Hich contrast" style="max-width: 200px; max-height:100px;">
+            <img class="filtered" id="displaygrey" src="" alt="Greyscale" style="max-width: 200px; max-height:100px;">
+            <img class="filtered" id="displayinvert" src="" alt="Color inverted" style="max-width: 200px; max-height:100px;">
+        </div>
+        
+        <label for="imageChooser" class="imageCl" id="lablImg" style="background-color: aquamarine; padding:7px 20px">CHOOSE FILE</label>
+        <input id="imageChooser" type="file" name="pic" style="display:none;">
+        
+        
+        <input id="plabel" type="text" placeholder="Choose an image to automatically label it">
+        <input id="pname" type="text" placeholder="Product name">
+        <input id="description" type="text" placeholder="Product description">
+        <input id="price" type="number" min="1" placeholder="Price">
+        <input id="stock" type="number" min="1" placeholder="Stock">
+        <button id="upp" onclick='addtoshop()'>UPLOAD</button>
+    </div>
+    <div style="display: none;">
+        <canvas class="filtered" id="myCanvas" width="0" height="0"></canvas>
+        <canvas class="filtered" id="myCanvas2" width="0" height="0"></canvas>
+        <canvas class="filtered" id="myCanvas3" width="0" height="0"></canvas>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="../js/add.js"></script>
+    <script defer src="../js/mongo.js"></script>
+</body>
+</html> 

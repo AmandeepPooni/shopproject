@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NITH TRADING</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="seller.css">
+    <script src="/__/firebase/7.6.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.6.1/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+</head>
+<body>
+    <div class="top">
+        
+        
+    </div>
+    
+    <div class="searchcon">
+        <div class="websitename" style="margin: 20px 20px;">
+            NITH TRADING CO.
+        </div>
+        <div class="f1"></div>
+        <a href="../add" class="buy teal" style="padding: 10px 30px;">
+            ADD
+        </a>
+    </div>
+    
+    
+    <div id="shownum" class="number">SHOWING 0 RESULTS</div>
+    
+    <div class="products" id="products">
+        
+        <product v-for="product in products" :key="product._id" :product="product"></product>
+        
+        
+    </div>
+    
+    <div id="infocon" style="display: none;" class="infocon flex">
+        <div class="cancel" onclick="document.getElementById('infocon').style.display='none'">CANCEL</div>
+        <div class="info">
+            
+            <img class="infimg" v-bind:src="product.data.img">
+            
+            <div class="flex">{{product.data.name}}<div class="f1"></div>₹{{product.data.price}}</div>
+            <div class="descript">{{product.data.des}}</div>
+            <div>Current stock: {{product.data.stock}}</div>
+            <div class="eachinf">ADD STOCK&nbsp&nbsp&nbsp<input id="sss" type="number" min="1"></div>
+            <div id="butt" class="buy teal" @click="update(product._id)">UPDATE</div>
+            <div class="eachinf">ORDERS</div>
+            <div id="prevorders" class="orders"></div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="../js/seller.js"></script>
+    <script defer src="../js/mongo.js"></script>
+</body>
+</html> 

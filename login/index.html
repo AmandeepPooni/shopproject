@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../main.css">
+<script src="/__/firebase/7.6.1/firebase-app.js"></script>
+<script src="/__/firebase/7.6.1/firebase-auth.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script>
+  function login(){
+    
+    var email = document.getElementById('email').value.trim();
+    var pass = document.getElementById('pass').value.trim();
+    
+    if (pass!="") {
+      document.getElementById("em").innerHTML = "Signing in"; 
+      firebase.auth().signInWithEmailAndPassword(email, pass).then(function() {
+        window.location.replace("../");
+      }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      document.getElementById("em").innerHTML = errorMessage; 
+      });
+      
+    }
+    else{
+      document.getElementById("em").innerHTML = "Re-enter the password"; 
+    }
+    
+    
+  }
+  
+  
+  function create(){
+    
+    var email = document.getElementById('email').value.trim();
+    var pass = document.getElementById('pass').value.trim();
+    
+    if (pass!="") {
+      document.getElementById("em").innerHTML = "Creating..."; 
+      firebase.auth().createUserWithEmailAndPassword(email, pass).then(function() {
+        window.location.replace("../");
+      }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      document.getElementById("em").innerHTML = errorMessage; 
+      });
+      
+    }
+    else{
+      document.getElementById("em").innerHTML = "Re-enter the password"; 
+    }
+    
+    
+  }
+  
+</script>
+<body>
+  
+  <div class="signin flex" id="signincon">
+    <div class="prod" style="background-color: azure;">
+      
+      <div class="pname flex"><input class="signform" id="email" type="email" placeholder="Email"></div>
+      <div class="pname flex"><input class="signform" id="pass" type="password" placeholder="Password"></div>
+      <div class="flex" style="padding-top: 15px;"><div id="em"></div></div>
+      <div class="buy teal" id="sbutton" onclick="login()">SIGN IN</div>
+      <div class="flex" style="padding-top: 15px;"><div id="em">OR</div></div>
+      <div class="buy teal" id="sbutton2" onclick="create()">CREATE ACCOUNT</div>
+    </div>
+    
+    
+    
+  </div>
+  
+  
+</div>
+
+<div id="snackbar"></div>
+
+</body>
+</html> 

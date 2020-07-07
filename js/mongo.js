@@ -1,6 +1,4 @@
-var api = "https://us-central1-nithbuy.cloudfunctions.net/";
-
-//api = "http://localhost:5001/nithbuy/us-central1/";
+var api = "https://yourapi/";
 
 async function insert(url,data){
 
